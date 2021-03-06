@@ -1,5 +1,5 @@
+using Arcaim.Assertor.Interfaces;
 using Arcaim.DI.Scanner;
-using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Arcaim.Assertor
@@ -8,10 +8,11 @@ namespace Arcaim.Assertor
     {
         public static IServiceCollection AddAssertor(this IServiceCollection services)
         {
-            services.AddSingleton<IAssertor, Assertor>();
+            services.AddSingleton<IAssertorDispatcher, AssertorDispatcher>();
             services.Scan(a => a.ByAppAssemblies()
-                .InheritFrom(typeof(AbstractValidator<>))
+                .InheritedFrom(typeof(AbstractAssertor<>))
                 .WithTransientLifetime());
+            services.AddSingleton<IAssertorService, AssertorService>();
 
             return services;
         }
