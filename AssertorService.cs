@@ -28,7 +28,7 @@ namespace Arcaim.Assertor
                 !type.IsAbstract &&
                 !type.IsInterface &&
                 !type.IsGenericType &&
-                type.BaseType.Name.Equals(typeof(AbstractAssertor<>).Name, StringComparison.Ordinal));
+                type.BaseType.Name.Equals(typeof(AbstractValidator<>).Name, StringComparison.Ordinal));
 
 
             assertorTypes.ToList().ForEach(serviceType

@@ -1,20 +1,18 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Arcaim.Assertor.Interfaces;
-using FluentValidation;
 using Microsoft.AspNetCore.Http;
 
 namespace Arcaim.Assertor
 {
-    public class AssertorMiddleware
+    public class AssertorMiddleware : IMiddleware
     {
-        private readonly RequestDelegate _next;
         private readonly IAssertorService _assertorService;
 
-        public AssertorMiddleware(RequestDelegate next, IAssertorService assertorService)
-            => (_next, _assertorService) = (next, assertorService);
+        public AssertorMiddleware(IAssertorService assertorService)
+            => _assertorService = assertorService;
 
-        public async Task Invoke(HttpContext context)
+        public async Task InvokeAsync(HttpContext context, RequestDelegate next)
         {
             Task.WaitAll(_assertorService.ValidationInfos
                 .Where(x => x.HasMethodAttribute)
@@ -28,7 +26,17 @@ namespace Arcaim.Assertor
                     }
                 })).ToArray());
 
-            await _next(context);
+            // try
+            // {
+            // }
+            // catch (ValidationException ex)
+            // {
+            //     context.Response.StatusCode = ex.StatusCode;
+            //     context.Response. = ex.StatusCode;
+            //     // throw new MiddlewareException();
+            // }
+
+            await next(context);
         }
     }
 }

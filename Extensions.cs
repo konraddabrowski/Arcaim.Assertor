@@ -8,13 +8,15 @@ namespace Arcaim.Assertor
     {
         public static IServiceCollection AddAssertor(this IServiceCollection services)
         {
-            services.AddSingleton<IAssertorDispatcher, AssertorDispatcher>();
             services.Scan(a => a.ByAppAssemblies()
-                .InheritedFrom(typeof(AbstractAssertor<>))
+                .InheritedFrom(typeof(AbstractValidator<>))
                 .WithTransientLifetime());
             services.AddSingleton<IAssertorService, AssertorService>();
 
             return services;
         }
+
+        public static void Validate<T>(this IValidator validator)
+            => validator.Validate();
     }
 }
