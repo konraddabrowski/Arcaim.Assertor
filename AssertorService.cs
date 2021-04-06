@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Arcaim.Assertor.Interfaces;
-using FluentValidation;
 
 namespace Arcaim.Assertor
 {
