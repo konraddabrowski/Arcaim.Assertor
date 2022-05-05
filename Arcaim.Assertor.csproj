@@ -2,26 +2,27 @@
 
   <PropertyGroup>
     <Description>The Assertor validates models</Description>
-        <Authors>Konrad Dąbrowski</Authors>
-        <TargetFramework>net5.0</TargetFramework>
-        <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <LangVersion>Latest</LangVersion>
-        <AssemblyName>Arcaim.Assertor</AssemblyName>
-        <Title>Arcaim.Assertor</Title>
-        <PackageId>Arcaim.Assertor</PackageId>
-        <Company>Arcaim</Company>
-        <Version>1.0.0</Version>
+    <Authors>Konrad Dąbrowski</Authors>
+    <TargetFramework>net6.0</TargetFramework>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <LangVersion>Latest</LangVersion>
+    <AssemblyName>Arcaim.Assertor</AssemblyName>
+    <Title>Arcaim.Assertor</Title>
+    <PackageId>Arcaim.Assertor</PackageId>
+    <Company>Arcaim</Company>
+    <Version>6.0.0</Version>
   </PropertyGroup>
-  
-    <ItemGroup>
-        <FrameworkReference Include="Microsoft.AspNetCore.App" />
-        <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-        <PackageReference Include="FluentValidation" Version="10.0.4" />
-    </ItemGroup>
 
-    <ItemGroup>
-        <ProjectReference Include="..\Arcaim.DI.Scanner\Arcaim.DI.Scanner.csproj" />
-        <ProjectReference Include="..\Arcaim.CQRS.WebApi\Arcaim.CQRS.WebApi.csproj" />
-    </ItemGroup>
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App">
+      <PrivateAssets>all</PrivateAssets>
+    </FrameworkReference>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Arcaim.DI.Scanner" Version="6.0.0" />
+    <PackageReference Include="FluentValidation" Version="11.0.0" />
+    <PackageReference Include="Arcaim.CQRS.WebApi" Version="6.0.0" />
+  </ItemGroup>
 
 </Project>
