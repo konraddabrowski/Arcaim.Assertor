@@ -17,7 +17,7 @@ public class Validator : Arcaim.CQRS.WebApi.Interfaces.IValidator
     var validator = scope.ServiceProvider.GetService<AbstractValidator<T>>();
     if (validator is not null)
     {
-      await validator.ValidateAsync(instance);
+      await validator.ValidateAndThrowAsync(instance);
     }
   }
 }
